@@ -1,0 +1,22 @@
+<ion-modal-view>
+ 		<form name="expenseForm" id="expenseForm">
+		  	<ion-title>
+  				<h4>Dodaj nowy wydatek</h4>
+  			</ion-title>
+ 			<div class="list">
+ 				<label class="item item-input item-floating-label">
+ 					<span class="input-label">Kwota</span>
+ 					<input type="text" placeholder="Kwota" ng-model="ammount" required>
+ 				</label>
+			<label class="item item-select">
+ 					<span class="select-label">Kategoria</span>
+ 					<select ng-model="category" required>
+ 						<option ng-repeat="c in vm.categories">{{ c | lowercase }}</option>
+ 					</select>
+			</label>
+			<div class="modal-button">
+				<button class="button button-energized" ng-disabled="expenseForm.$invalid" ng-click="vm.addExpense(ammount, category)">Dodaj</button>
+ 			</div>
+ 			</div>
+ 		</form>
+</ion-modal-view>

@@ -1,1 +1,108 @@
-/* Empty. Add your own CSS if you like */
+ion-title h4, ion-list-header h4 {
+	text-align: center;
+	color: white !important;
+}
+
+ion-list .operations {
+	color: white;
+}
+
+ion-list ion-item ion-note {
+	text-transform: capitalize;
+	vertical-align: middle;
+}
+
+select option:empty {
+	display: none
+}
+
+select {
+	text-transform: capitalize;
+}
+
+ion-list ion-item ion-note:nth-child(2) {
+	font-weight: bold;
+	padding: 0px 20px 0px 10px;
+}
+
+ion-list ion-item ion-note:last-child {
+	float: right;
+	text-transform: none;
+}
+
+.income {
+	background-color: limegreen  !important;
+}
+
+.expense {
+	background-color: #ff541c  !important;
+}
+
+ion-header-bar { 
+	box-shadow:  0px 0px 10px rgba(121,139,149,.6);
+	background-color: orange !important; 
+}
+
+ion-header-bar .header-item .ion-navicon-round {
+	color: white !important;
+}
+
+ion-header-bar .title {
+	color: white !important;
+}
+
+ion-content {
+	background-color: orange;
+}
+
+ion-side-menu .disable-user-behavior ion-item {
+	font-size: 20px;
+}
+
+ion-side-menu .icon {
+	font-size: 30px;
+}
+
+.modal-wrapper .modal {
+	background-color: orange;
+}
+
+.modal-wrapper .modal .list {
+	background-color: white;
+}
+
+.modal-wrapper .modal button {
+    margin: auto;
+    position: relative;
+    display: list-item;
+}
+
+.modal-wrapper .modal-button {
+	padding: 6px;
+}
+
+.modal-wrapper .input-label {
+	font-size: 20px;
+}
+
+.model-wrapper span .select-label {
+	font-size: 130%;
+}
+
+.modal-wrapper input, .modal-wrapper select {
+	font-size: 18px;
+}
+
+ion-content .expenses i {
+	vertical-align: baseline;
+	padding: 5px;
+	font-size: 21px;
+}
+
+ion-content .expenses {
+    border-bottom: 2px white solid
+}
+
+.header-border {
+	border-bottom: 2px white solid;
+}
