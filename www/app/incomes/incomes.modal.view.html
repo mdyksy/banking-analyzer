@@ -1,7 +1,7 @@
 <ion-modal-view>
- 		<form name="expenseForm" id="expenseForm">
+ 		<form name="incomeForm" id="incomeForm">
 		  	<ion-title>
-  				<h4>Dodaj nowy wydatek</h4>
+  				<h4>Dodaj nowy wpływ</h4>
   			</ion-title>
  			<div class="list">
         <label class="item item-input item-floating-label">
@@ -12,15 +12,9 @@
           <span class="input-label">Kwota</span>
          <input type="text" placeholder="Kwota" ng-model="vm.amount" required>
         </label>
-        <label class="item item-select">
-          <span class="select-label">Kategoria</span>
-          <select ng-model="vm.category" required>
-            <option ng-repeat="c in vm.categories">{{ c }}</option>
-          </select>
-        </label>
         <div class="modal-button">
-          <button class="button button-energized" ng-disabled="expenseForm.$invalid"
-                  ng-click="vm.addExpense(vm.title, vm.amount, vm.category)">Dodaj</button>
+          <button class="button button-energized" ng-disabled="incomeForm.$invalid"
+                  ng-click="vm.addIncome(vm.title, vm.amount)">Dodaj</button>
           <button class="button button-energized"
                   ng-click="vm.closeModal()">Anuluj</button>
         </div>

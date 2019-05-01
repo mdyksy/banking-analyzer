@@ -1,4 +1,48 @@
-<ion-view view-title="Przychody">
+<ion-view view-title="Wpływy">
   <ion-content>
+  
+  	<div class="header-border">
+	    <ion-title>
+	  		<h4>{{ vm.actualMonth }}</h4>
+	  	</ion-title>
+  	</div>
+  	<ion-list>
+	<ion-item-group>
+		<ion-item class="operations income" ng-repeat='op in vm.operations | orderBy: "op.date" :true | limitTo: 5'>
+			<i class="icon fill-icon" ng-class='{"ion-shuffle": op.category == "TRANSFER", "ion-cash": op.category == "CASH"}'></i>
+			<ion-note>{{ op.title }}</ion-note>
+			<ion-note>{{ op.amount | currency : '' : 2}} zł</ion-note>
+		</ion-item>
+		</ion-item-group>
+  	<ion-list>
+  	
+  	<ion-title>
+  		<h4>Wpływy z wybranego miesiąca</h4>
+      <label class="item item-select">
+        <span class="select-label">Wybierz miesiąc</span>
+        <select ng-model="selectedMonth" ng-change="vm.filterOperations(selectedMonth)">
+          <option ng-repeat="m in vm.months">{{ m }}</option>
+        </select>
+      </label>
+  	</ion-title>
+      <ion-item-group>
+        <ion-item class="operations income" ng-repeat='op in vm.filteredOperations | orderBy: "op.createdOn" :true'>
+          <i class="icon fill-icon" ng-class='{"ion-shuffle": op.category == "TRANSFER", "ion-cash": op.category == "CASH"}'></i>
+          <ion-note>{{ op.title }}</ion-note>
+          <ion-note>{{ op.createdOn | date : 'dd.MM.y HH:mm' : '+0200'}}</ion-note>
+          <ion-note>{{ op.amount | currency : '' : 2}} zł</ion-note>
+        </ion-item>
+      </ion-item-group>
+  
+  	<div class="header-border">
+	    <ion-title>
+	  		<h4>Dodaj wpływy <i class="icon fill-icon ion-plus-round" ng-click="vm.openModal()"></i></h4>
+	  	</ion-title>
+  	</div>
+  	<div class="header-border">
+	  	<ion-title>
+	  		<h4>Odswież <i class="icon fill-icon ion-refresh" ng-click="vm.refresh()"></i></h4>
+	  	</ion-title>
+  	</div>
   </ion-content>
 </ion-view>

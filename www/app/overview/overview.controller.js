@@ -5,10 +5,10 @@
 
 	overviewController.$inject = [ 'restFactory' ];
 	function overviewController(restFactory) {
-		var vm = this;
-		var userId = 291;
-		var bankAccId = 1153;
-		var labels = new Set();
+		let vm = this;
+		let userId = 291;
+		let bankAccId = 1153;
+		let labels = new Set();
 
 		vm.sum = 0;
 		vm.bankAccounts = [];
@@ -19,7 +19,7 @@
 		vm.series = ['Podsumowanie'];
 		vm.data = [0, 0];
 		
-		var headers = {
+		let headers = {
 				'Content-Type': 'application/json',
 				'ApplicationKey': 'qwerty'
 		};

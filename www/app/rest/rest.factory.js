@@ -7,8 +7,10 @@
 
 	restFactory.$inject = [ '$http', 'config' ];
 	function restFactory($http, config) {
-		var service = {
+		let service = {
 			getUser : getUser,
+      getCategories: getCategories,
+      addOperation: addOperation,
 			deleteUser: deleteUser,
 			addUser: addUser,
 			getLimitByCategory: getLimitByCategory,
@@ -21,70 +23,92 @@
 		};
 		return service;
 
-		function getUser(id) {
-			return $http.get(config.beUrl + '/user/get/' + id).then(resolve);
-		};
+		function getCategories() {
+		  return $http.get(config.beUrl + '/categories').then(resolve);
+    }
+
+		function getUser(email) {
+			return $http.get(config.beUrl + '/user/get/' + email).then(resolve);
+		}
 		
 		function deleteUser(id) {
 			return $http.delete(config.beUrl + '/user/delete/' + id).then(resolve);
-		};
+		}
 		
-		function addUser(name, email, password, bankAccountId, walletAccount) {
-			var user = {
-					'fullName': name,
+		function addUser(firstName, surname, email, password, bankAccountId, walletAccount) {
+			let user = {
+					'firstName': firstName,
+          'surname': surname,
 					'email' : email,
 					'password': password,
-					'bankAccountId': bankAccountId,
-					'walletAccount': walletAccount
+					'bankAccountId': bankAccountId
 			};
 			return $http.post(config.beUrl + '/user/add', JSON.stringify(user)).then(resolve);
-		};
+		}
 
 		function getLimitByCategory(category, user) {
-			var limit = {
+			let limit = {
 					'category': category,
 					'user': user
 			};
 			return $http.post(config.beUrl + '/limit/get/category', JSON.stringify(limit)).then(resolve);
-		};
+		}
 		
 		function getLimitByUserId(id) {
 			return $http.get(config.beUrl + '/limit/get/' + id).then(resolve);
-		};
+		}
 		
 		function addLimit(ammount, category, user) {
-			var limit = {
+			let limit = {
 					'ammount': ammount,
 					'category': category,
 					'user': user
 			};
 			return $http.post(config.beUrl + '/limit/add', JSON.stringify(limit)).then(resolve)
-		};
+		}
 		
 		function deleteLimit(id) {
 			return $http.delete(config.beUrl + '/limit/delete/' + id).then(resolve);
-		};
+		}
+
+		function addOperation(email, title, amount, category, type) {
+		  let operation = {
+        'operation': {
+          'email': email,
+          'title': title,
+          'amount': amount,
+          'category': category,
+          'type': type
+        }
+		  };
+
+      return $http.post(config.beUrl + '/addOperation', operation).then(resolve)
+    }
 		
 		function getBankAccount(id) {
 			return $http.get(config.bankingUrl + '/account/get/' + id).then(resolve);
-		};
+		}
 		
-		function getOperations(id) {
-			return $http.get(config.bankingUrl + '/operation/get/' + id).then(resolve);
-		};
+		function getOperations(email) {
+		  let getAllOpReq = {
+		    'email': email
+      };
+
+			return $http.post(config.beUrl+ '/operations', getAllOpReq).then(resolve);
+		}
 		
 		function getOperationsByType(id, type) {
-			var operation = {
+			let operation = {
 					'accountId': id,
 					'type': type
 			};
 			return $http.post(config.bankingUrl + '/operation/get/type', JSON.stringify(operation), {headers: {'Content-Type': 'application/json'}}).then(resolve);
-		};
+		}
 		
 		function resolve(response) {
 			return response.data;
-		};
+		}
 		
-	};
+	}
 
 })();

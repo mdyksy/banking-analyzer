@@ -1,10 +1,10 @@
 (function () {
 	'use strict';
 	
-	angular.module('banalyzer').controller('ExpensesController', expensesController);
+	angular.module('banalyzer').controller('IncomesController', incomesController);
 	
-	expensesController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
-	function expensesController(restFactory, $ionicModal, $scope) {
+	incomesController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
+	function incomesController(restFactory, $ionicModal, $scope) {
 		let vm = this;
 		let email = 'm.dyksy95@gmail.com';
     const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
@@ -13,16 +13,15 @@
 		vm.user = {};
 		vm.operations = [];
 		vm.filteredOperations = [];
-		vm.categories = {};
 		vm.months = months;
     vm.actualMonth = parseMonth();
-		vm.addExpense = addExpense;
+		vm.addIncome = addIncome;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
 		vm.refresh = refresh;
     vm.filterOperations = filterOperations;
 
-		$ionicModal.fromTemplateUrl('app/expenses/expenses.modal.view.html', {
+		$ionicModal.fromTemplateUrl('app/incomes/incomes.modal.view.html', {
 			scope: $scope
 		}).then(function(modal) {
 			vm.modal = modal;
@@ -37,19 +36,13 @@
 
     function refreshOperations() {
       restFactory.getOperations(email).then(function(op) {
-        vm.operations = op.operations.EXPENSE;
+        vm.operations = op.operations.INCOME;
       });
     }
 
     function getUserByEmail(email) {
       restFactory.getUser(email).then(function(user) {
         vm.user = user;
-      });
-    }
-
-		function getCategories() {
-		  return restFactory.getCategories().then(function(categories) {
-		    vm.categories = categories;
       });
     }
 
@@ -60,33 +53,23 @@
       });
     }
 
-		function addExpense(title, amount, category) {
-		  restFactory.addOperation(email, title, amount, getCategoryKey(category), 'EXPENSE');
+		function addIncome(title, amount, category) {
+		  restFactory.addOperation(email, title, amount, "CASH", 'INCOME');
 
 		  setTimeout(function() {
         refreshOperations();
         closeModal();
 
         vm.title = '';
-        vm.category = '';
         vm.amount = '';
       }, 100);
 		}
-
-		function getCategoryKey(category) {
-      let categoriesMap = new Map(Object.entries(vm.categories));
-      for(const entry of categoriesMap) {
-        if(entry[1] === category)
-          return entry[0];
-      }
-    }
 
 		function refresh() {
 		  activate();
 		}
 
 		function openModal(){
-		  vm.categories = getCategories();
 			vm.modal.show();
 	 	}
 

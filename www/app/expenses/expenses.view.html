@@ -3,26 +3,40 @@
   
   	<div class="header-border">
 	    <ion-title>
-	  		<h4>Wydatki w maju</h4>
+	  		<h4>{{ vm.actualMonth }}</h4>
 	  	</ion-title>
   	</div>
   	<ion-list>
 	<ion-item-group>
-		<ion-item class="operations" ng-repeat='op in vm.operations | orderBy: "op.date" :true | limitTo: 5' ng-class='{"expense": op.operationType == "EXPENSE"}'>
-			<i class="icon fill-icon" ng-class='{"ion-ios-cart": op.operationCategory == "SHOPPING" , "ion-university": op.operationCategory == "EDUCATION", "ion-pizza": op.operationCategory == "FOOD", 
-					"ion-ios-medkit": op.operationCategory == "HEALTH", "ion-home": op.operationCategory == "HOME", "ion-android-car": op.operationCategory == "CAR",
-					"ion-shuffle": op.operationCategory == "TRANSFER", "ion-plane": op.operationCategory == "TRAVEL", "ion-help": op.operationCategory == "REST"}'></i>
-			<ion-note>{{ op.operationCategory | lowercase }}</ion-note>
-			<ion-note>{{ op.date | date:'yyyy-MM-dd'}}</ion-note>
-			<ion-note>{{ op.ammount | currency : '' : 2}} zł</ion-note>
+		<ion-item class="operations expense" ng-repeat='op in vm.operations | orderBy: "op.date" :true | limitTo: 5'>
+			<i class="icon fill-icon" ng-class='{"ion-ios-cart": op.category == "SHOPPING" , "ion-university": op.category == "EDUCATION", "ion-pizza": op.category == "FOOD",
+					"ion-ios-medkit": op.category == "HEALTH", "ion-home": op.category == "HOME", "ion-android-car": op.category == "CAR",
+					"ion-shuffle": op.category == "TRANSFER", "ion-plane": op.category == "TRAVEL", "ion-help": op.category == "REST"}'></i>
+			<ion-note>{{ op.title }}</ion-note>
+			<ion-note>{{ op.amount | currency : '' : 2}} zł</ion-note>
 		</ion-item>
 		</ion-item-group>
   	<ion-list>
   	
   	<ion-title>
-  		<h4>sekcja tabeli ze szczegółami wydatków WYBRANEGO miesiąca (default obecny),</h4>
+  		<h4>Wydatki z wybranego miesiąca</h4>
+      <label class="item item-select">
+        <span class="select-label">Wybierz miesiąc</span>
+        <select ng-model="selectedMonth" ng-change="vm.filterOperations(selectedMonth)">
+          <option ng-repeat="m in vm.months">{{ m }}</option>
+        </select>
+      </label>
   	</ion-title>
-  	<ion-item></ion-item>
+      <ion-item-group>
+        <ion-item class="operations expense" ng-repeat='op in vm.filteredOperations | orderBy: "op.createdOn" :true'>
+          <i class="icon fill-icon" ng-class='{"ion-ios-cart": op.category == "SHOPPING" , "ion-university": op.category == "EDUCATION", "ion-pizza": op.category == "FOOD",
+					"ion-ios-medkit": op.category == "HEALTH", "ion-home": op.category == "HOME", "ion-android-car": op.category == "CAR",
+					"ion-shuffle": op.category == "TRANSFER", "ion-plane": op.category == "TRAVEL", "ion-help": op.category == "REST"}'></i>
+          <ion-note>{{ op.title }}</ion-note>
+          <ion-note>{{ op.createdOn | date : 'dd.MM.y HH:mm' : '+0200'}}</ion-note>
+          <ion-note>{{ op.amount | currency : '' : 2}} zł</ion-note>
+        </ion-item>
+      </ion-item-group>
   
   	<div class="header-border">
 	    <ion-title>

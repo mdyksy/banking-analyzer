@@ -20,7 +20,7 @@
 		})
 
 		.constant('config', {
-			'beUrl' : 'http://localhost:8095',
+			'beUrl' : 'http://localhost:8090',
 			'bankingUrl' : 'http://localhost:8096'
 		})
 
@@ -47,7 +47,9 @@
 					url : '/incomes',
 					views : {
 						'menuContent' : {
-							templateUrl : 'app/incomes/incomes.view.html'
+							templateUrl : 'app/incomes/incomes.view.html',
+              controller: 'IncomesController',
+              controllerAs: 'vm'
 						}
 					}
 				})
