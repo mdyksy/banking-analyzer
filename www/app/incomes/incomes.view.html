@@ -29,7 +29,7 @@
         <ion-item class="operations income" ng-repeat='op in vm.filteredOperations | orderBy: "op.createdOn" :true'>
           <i class="icon fill-icon" ng-class='{"ion-shuffle": op.category == "TRANSFER", "ion-cash": op.category == "CASH"}'></i>
           <ion-note>{{ op.title }}</ion-note>
-          <ion-note>{{ op.createdOn | date : 'dd.MM.y HH:mm' : '+0200'}}</ion-note>
+          <ion-note>{{ op.createdOn | date : 'dd.MM.y HH:mm' : '+0200' }}</ion-note>
           <ion-note>{{ op.amount | currency : '' : 2}} zł</ion-note>
         </ion-item>
       </ion-item-group>

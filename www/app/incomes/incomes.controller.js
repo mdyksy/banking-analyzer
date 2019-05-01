@@ -18,7 +18,7 @@
 		vm.addIncome = addIncome;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
-		vm.refresh = refresh;
+		vm.refresh = activate();
     vm.filterOperations = filterOperations;
 
 		$ionicModal.fromTemplateUrl('app/incomes/incomes.modal.view.html', {
@@ -54,19 +54,14 @@
     }
 
 		function addIncome(title, amount, category) {
-		  restFactory.addOperation(email, title, amount, "CASH", 'INCOME');
+		  restFactory.addOperation(email, title, amount, "CASH", 'INCOME').then(
+        function() {
+          refreshOperations();
+          closeModal();
 
-		  setTimeout(function() {
-        refreshOperations();
-        closeModal();
-
-        vm.title = '';
-        vm.amount = '';
-      }, 100);
-		}
-
-		function refresh() {
-		  activate();
+          vm.title = '';
+          vm.amount = '';
+      });
 		}
 
 		function openModal(){

@@ -2,7 +2,7 @@
   <ion-content>
   <div class="header-border">
 	  	<ion-title>
-	  		<h4>Podsumowanie miesiąca</h4>
+	  		<h4>Podsumowanie</h4>
 	  	</ion-title>
   </div>
  	<ion-item>
@@ -14,14 +14,14 @@
   	<ion-list>
   		<div class="header-border">
 	  		<ion-list-header>
-	  			<h4>Stan Twoich kont</h4>
+	  			<h4>Twoje aktualne finanse</h4>
 	  		</ion-list-header>
   		</div>
   		<ion-item-group>
 			<ion-item>
 				<i class="icon fill-icon ion-cash"></i>
-				<ion-note>portfel</ion-note>
-				<ion-note class="ion-float-r">{{ vm.user.walletAccount | currency : '' : 2 }} zł</ion-note>
+				<ion-note>Portfel</ion-note>
+				<ion-note class="ion-float-r">{{ vm.user.walletBalance | currency : '' : 2 }} zł</ion-note>
 			</ion-item>
 			<ion-item ng-repeat='ba in vm.bankAccounts'>
 				<i class="icon fill-icon ion-card"></i>
@@ -29,7 +29,7 @@
 				<ion-note class="ion-float-r">{{ ba.balance | currency : '' : 2 }} zł</ion-note>
 			</ion-item>
 			<ion-item>
-				<ion-note> {{ vm.sum }}</ion-note>
+				<ion-note> Suma: {{ vm.sum | currency : '' : 2}} zł</ion-note>
 			</ion-item>
   		</ion-item-group>
     </ion-list>
@@ -41,14 +41,15 @@
   		</ion-list-header>
 	  </div>
   		<ion-item-group>
-			<ion-item class="operations" ng-repeat='op in vm.operations | orderBy: "op.date" :true | limitTo: 5' ng-class='{"income": op.operationType == "INCOME" , "expense": op.operationType == "EXPENSE"}'>
-				<i class="icon fill-icon" ng-class='{"ion-ios-cart": op.operationCategory == "SHOPPING" , "ion-university": op.operationCategory == "EDUCATION", "ion-pizza": op.operationCategory == "FOOD", 
-						"ion-ios-medkit": op.operationCategory == "HEALTH", "ion-home": op.operationCategory == "HOME", "ion-android-car": op.operationCategory == "CAR",
-						"ion-shuffle": op.operationCategory == "TRANSFER", "ion-plane": op.operationCategory == "TRAVEL", "ion-help": op.operationCategory == "REST"}'></i>
-				<ion-note>{{ op.operationCategory | lowercase }}</ion-note>
-				<ion-note>{{ op.date | date:'yyyy-MM-dd'}}</ion-note>
-				<ion-note>{{ op.ammount | currency : '' : 2}} zł</ion-note>
-			</ion-item>
+        <ion-item class="operations" ng-repeat='op in vm.operations | limitTo: 5' ng-class='{"income": op.type == "INCOME" , "expense": op.type == "EXPENSE"}'>
+          <i class="icon fill-icon" ng-class='{"ion-ios-cart": op.category == "SHOPPING" , "ion-university": op.category == "EDUCATION", "ion-pizza": op.category == "FOOD",
+              "ion-ios-medkit": op.category == "HEALTH", "ion-home": op.category == "HOME", "ion-android-car": op.category == "CAR",
+              "ion-shuffle": op.category == "TRANSFER", "ion-plane": op.category == "TRAVEL", "ion-help": op.category == "REST"
+              , "ion-cash": op.category == "CASH"}'></i>
+          <ion-note>{{ op.title }}</ion-note>
+          <ion-note>{{ op.createdOn | date : 'dd.MM.y HH:mm' : '+0200' }}</ion-note>
+          <ion-note>{{ op.amount | currency : '' : 2 }} zł</ion-note>
+        </ion-item>
   		</ion-item-group>
     </ion-list>
     

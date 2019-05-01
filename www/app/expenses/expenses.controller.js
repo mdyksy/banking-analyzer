@@ -19,7 +19,7 @@
 		vm.addExpense = addExpense;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
-		vm.refresh = refresh;
+		vm.refresh = activate();
     vm.filterOperations = filterOperations;
 
 		$ionicModal.fromTemplateUrl('app/expenses/expenses.modal.view.html', {
@@ -61,16 +61,15 @@
     }
 
 		function addExpense(title, amount, category) {
-		  restFactory.addOperation(email, title, amount, getCategoryKey(category), 'EXPENSE');
+		  restFactory.addOperation(email, title, amount, getCategoryKey(category), 'EXPENSE').then(
+		    function() {
+          refreshOperations();
+          closeModal();
 
-		  setTimeout(function() {
-        refreshOperations();
-        closeModal();
-
-        vm.title = '';
-        vm.category = '';
-        vm.amount = '';
-      }, 100);
+          vm.title = '';
+          vm.category = '';
+          vm.amount = '';
+      });
 		}
 
 		function getCategoryKey(category) {
@@ -80,10 +79,6 @@
           return entry[0];
       }
     }
-
-		function refresh() {
-		  activate();
-		}
 
 		function openModal(){
 		  vm.categories = getCategories();
