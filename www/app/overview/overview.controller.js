@@ -7,8 +7,6 @@
 	function overviewController(restFactory) {
 		let vm = this;
 		let email = "m.dyksy95@gmail.com";
-		let bankAccId = 1153;
-		let labels = new Set();
 
     vm.sum = 0;
 		vm.bankAccounts = [];

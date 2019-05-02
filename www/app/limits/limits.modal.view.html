@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <form name="limitForm" id="limitForm">
+    <ion-title>
+      <h4>Dodaj nowy wpływ</h4>
+    </ion-title>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Kwota</span>
+        <input type="text" placeholder="Kwota" ng-model="vm.amount" required>
+      </label>
+      <label class="item item-select">
+        <span class="select-label">Kategoria</span>
+        <select ng-model="vm.category" required>
+          <option ng-repeat="c in vm.categories">{{ c }}</option>
+        </select>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Data od</span>
+        <input type="text" placeholder="Data od" ng-model="vm.dateFrom" required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Data do</span>
+        <input type="text" placeholder="Data do" ng-model="vm.dateTo" required>
+      </label>
+      <div class="modal-button">
+        <button class="button button-energized" ng-disabled="limitForm.$invalid"
+                ng-click="vm.addLimit(vm.amount, vm.category, vm.dateFrom, vm.dateTo)">Dodaj</button>
+        <button class="button button-energized"
+                ng-click="vm.closeModal()">Anuluj</button>
+      </div>
+    </div>
+  </form>
+</ion-modal-view>

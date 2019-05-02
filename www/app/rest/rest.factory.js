@@ -14,7 +14,7 @@
 			deleteUser: deleteUser,
 			addUser: addUser,
 			getLimitByCategory: getLimitByCategory,
-			getLimitByUserId: getLimitByUserId,
+			getLimits: getLimits,
 			addLimit: addLimit,
 			deleteLimit: deleteLimit,
 			getBankAccount: getBankAccount,
@@ -54,17 +54,25 @@
 			return $http.post(config.beUrl + '/limit/get/category', JSON.stringify(limit)).then(resolve);
 		}
 		
-		function getLimitByUserId(id) {
-			return $http.get(config.beUrl + '/limit/get/' + id).then(resolve);
+		function getLimits(email) {
+      let getAllLimitsReq = {
+        'email': email
+      };
+
+			return $http.post(config.beUrl + '/limits/get', getAllLimitsReq ).then(resolve);
 		}
 		
-		function addLimit(ammount, category, user) {
-			let limit = {
-					'ammount': ammount,
-					'category': category,
-					'user': user
+		function addLimit(amount, category, email, dateFrom, dateTo) {
+			let addLimitReq = {
+			  'limit': {
+          'amount': amount,
+          'category': category,
+          'email': email,
+          'dateFrom': dateFrom,
+          'dateTo': dateTo
+        }
 			};
-			return $http.post(config.beUrl + '/limit/add', JSON.stringify(limit)).then(resolve)
+			return $http.post(config.beUrl + '/limits/add', addLimitReq).then(resolve)
 		}
 		
 		function deleteLimit(id) {

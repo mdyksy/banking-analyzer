@@ -81,7 +81,7 @@
     }
 
 		function openModal(){
-		  vm.categories = getCategories();
+		  getCategories();
 			vm.modal.show();
 	 	}
 

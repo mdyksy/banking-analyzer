@@ -1,4 +1,27 @@
 <ion-view view-title="Limity">
   <ion-content>
+    <div class="header-border">
+      <ion-title>
+        <h4>Twoje limity</h4>
+      </ion-title>
+    </div>
+    <ion-list>
+      <ion-item-group>
+        <ion-item class="limits" ng-repeat='l in vm.limits| orderBy: "l.createdOn" : true'>
+          <i class="icon fill-icon" ng-class='{"ion-shuffle": l.category == "TRANSFER", "ion-cash": l.category == "CASH"}'></i>
+          <ion-note>{{ l.amount | currency : '' : 2}} zł</ion-note>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+    <div class="header-border">
+      <ion-title>
+        <h4>Dodaj nowy limit <i class="icon fill-icon ion-plus-round" ng-click="vm.openModal()"></i></h4>
+      </ion-title>
+    </div>
+    <div class="header-border">
+      <ion-title>
+        <h4>Odswież <i class="icon fill-icon ion-refresh" ng-click="vm.refresh()"></i></h4>
+      </ion-title>
+    </div>
   </ion-content>
 </ion-view>

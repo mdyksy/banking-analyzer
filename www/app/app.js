@@ -69,7 +69,9 @@
 					url : '/limits',
 					views : {
 						'menuContent' : {
-							templateUrl : 'app/limits/limits.view.html'
+							templateUrl : 'app/limits/limits.view.html',
+              controller: 'LimitsController',
+              controllerAs: 'vm'
 						}
 					}
 				})
