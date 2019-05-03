@@ -24,7 +24,7 @@
 		return service;
 
 		function getCategories() {
-		  return $http.get(config.beUrl + '/categories').then(resolve);
+		  return $http.get(config.beUrl + '/dict/categories').then(resolve);
     }
 
 		function getUser(email) {
@@ -62,12 +62,12 @@
 			return $http.post(config.beUrl + '/limits/get', getAllLimitsReq ).then(resolve);
 		}
 		
-		function addLimit(amount, category, email, dateFrom, dateTo) {
+		function addLimit(maxAmount, category, email, dateFrom, dateTo) {
 			let addLimitReq = {
+			  'email': email,
 			  'limit': {
-          'amount': amount,
+          'maxAmount': maxAmount,
           'category': category,
-          'email': email,
           'dateFrom': dateFrom,
           'dateTo': dateTo
         }
@@ -90,7 +90,7 @@
         }
 		  };
 
-      return $http.post(config.beUrl + '/addOperation', operation).then(resolve)
+      return $http.post(config.beUrl + '/operations/add', operation).then(resolve)
     }
 		
 		function getBankAccount(id) {
@@ -102,7 +102,7 @@
 		    'email': email
       };
 
-			return $http.post(config.beUrl+ '/operations', getAllOpReq).then(resolve);
+			return $http.post(config.beUrl+ '/operations/get', getAllOpReq).then(resolve);
 		}
 		
 		function getOperationsByType(id, type) {

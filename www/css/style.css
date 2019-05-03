@@ -3,12 +3,11 @@ ion-title h4, ion-list-header h4 {
 	color: white !important;
 }
 
-ion-list .operations {
+ion-list .operations, ion-list .limits {
 	color: white;
 }
 
 ion-list ion-item ion-note {
-	text-transform: capitalize;
 	vertical-align: middle;
 }
 

@@ -7,9 +7,14 @@
     </div>
     <ion-list>
       <ion-item-group>
-        <ion-item class="limits" ng-repeat='l in vm.limits| orderBy: "l.createdOn" : true'>
-          <i class="icon fill-icon" ng-class='{"ion-shuffle": l.category == "TRANSFER", "ion-cash": l.category == "CASH"}'></i>
+        <ion-item class="limits" ng-repeat='l in vm.limits| orderBy: "l.createdOn" : true' ng-class='{"income": l.exceeded == true , "expense": l.exceeded == false}'>
+          <i class="icon fill-icon" ng-class='{"ion-ios-cart": l.category == "SHlPING" , "ion-university": l.category == "EDUCATION", "ion-pizza": l.category == "FOOD",
+              "ion-ios-medkit": l.category == "HEALTH", "ion-home": l.category == "HOME", "ion-android-car": l.category == "CAR",
+              "ion-shuffle": l.category == "TRANSFER", "ion-plane": l.category == "TRAVEL", "ion-help": l.category == "REST"
+              , "ion-cash": l.category == "CASH"}'></i>
           <ion-note>{{ l.amount | currency : '' : 2}} zł</ion-note>
+          <ion-note>{{ l.dateFrom }}</ion-note>
+          <ion-note>{{ l.dateTo }}</ion-note>
         </ion-item>
       </ion-item-group>
     </ion-list>

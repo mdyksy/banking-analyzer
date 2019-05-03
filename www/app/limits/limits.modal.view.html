@@ -6,7 +6,7 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label">Kwota</span>
-        <input type="text" placeholder="Kwota" ng-model="vm.amount" required>
+        <input type="text" placeholder="Kwota" ng-model="vm.maxAmount" required>
       </label>
       <label class="item item-select">
         <span class="select-label">Kategoria</span>
@@ -24,7 +24,7 @@
       </label>
       <div class="modal-button">
         <button class="button button-energized" ng-disabled="limitForm.$invalid"
-                ng-click="vm.addLimit(vm.amount, vm.category, vm.dateFrom, vm.dateTo)">Dodaj</button>
+                ng-click="vm.addLimit(vm.maxAmount, vm.category, vm.dateFrom, vm.dateTo)">Dodaj</button>
         <button class="button button-energized"
                 ng-click="vm.closeModal()">Anuluj</button>
       </div>
