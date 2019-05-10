@@ -13,7 +13,7 @@
     vm.openModal = openModal;
     vm.closeModal = closeModal;
     vm.addLimit = addLimit;
-    vm.refresh = activate();
+    vm.refresh = activate;
 
     $ionicModal.fromTemplateUrl('app/limits/limits.modal.view.html', {
       scope: $scope
@@ -28,6 +28,7 @@
     }
 
     function refreshLimits() {
+      console.log('ref');
       restFactory.getLimits(email).then(function(l) {
         vm.limits = l.limits;
       });

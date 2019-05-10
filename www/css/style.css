@@ -29,11 +29,11 @@ ion-list ion-item ion-note:last-child {
 	text-transform: none;
 }
 
-.income {
+.income, .not-exceeded {
 	background-color: limegreen  !important;
 }
 
-.expense {
+.expense, .exceeded {
 	background-color: #ff541c  !important;
 }
 
