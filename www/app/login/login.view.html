@@ -1,0 +1,26 @@
+<ion-view view-title="Logowanie">
+        <form name="loginForm" id="loginForm">
+            <ion-title>
+                <h4>Logowanie</h4>
+            </ion-title>
+            <div class="list">
+                grafika
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Nazwa użytkownika</span>
+                    <input type="text" placeholder="Nazwa użytkownika" ng-model="vm.email" required>
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Hasło</span>
+                    <input type="text" placeholder="Hasło" ng-model="vm.password" required>
+                </label>
+                <div class="modal-button">
+                    <button class="button button-energized" ng-disabled="loginForm.$invalid"
+                        ng-click="vm.login(vm.email, vm.password)">Zaloguj</button>
+                    <button class="button button-energized"
+                        ng-click="vm.openRegisterModal()">Załóż konto</button>
+                    <button class="button button-energized"
+                        ng-click="vm.openResendPassModal()">Zapomniałem hasła</button>
+                </div>
+            </div>
+        </form>
+</ion-view>
