@@ -24,26 +24,26 @@
 		return service;
 
 		function getCategories() {
-		  return $http.get(config.beUrl + '/dict/categories').then(resolve);
+		  return $http.get(config.beUrl + '/dict/categories').then(onSuccess, onError);
     }
 
 		function getUser(email) {
-			return $http.get(config.beUrl + '/user/get/' + email).then(resolve);
+			return $http.get(config.beUrl + '/user/get/' + email).then(onSuccess, onError);
 		}
 		
 		function deleteUser(id) {
-			return $http.delete(config.beUrl + '/user/delete/' + id).then(resolve);
+			return $http.delete(config.beUrl + '/user/delete/' + id).then(onSuccess, onError);
 		}
 		
-		function addUser(firstName, surname, email, password, bankAccountId, walletAccount) {
+		function addUser(email, firstName, surname, password, walletBalance) {
 			let user = {
 					'firstName': firstName,
           'surname': surname,
 					'email' : email,
 					'password': password,
-					'bankAccountId': bankAccountId
+					'walletBalance': walletBalance
 			};
-			return $http.post(config.beUrl + '/user/add', JSON.stringify(user)).then(resolve);
+			return $http.post(config.beUrl + '/user/register', user).then(onSuccess, onError);
 		}
 
 		function getLimitByCategory(category, user) {
@@ -51,7 +51,7 @@
 					'category': category,
 					'user': user
 			};
-			return $http.post(config.beUrl + '/limit/get/category', JSON.stringify(limit)).then(resolve);
+			return $http.post(config.beUrl + '/limit/get/category', JSON.stringify(limit)).then(onSuccess, onError);
 		}
 		
 		function getLimits(email) {
@@ -59,7 +59,7 @@
         'email': email
       };
 
-			return $http.post(config.beUrl + '/limits/get', getAllLimitsReq ).then(resolve);
+			return $http.post(config.beUrl + '/limits/get', getAllLimitsReq ).then(onSuccess, onError);
 		}
 		
 		function addLimit(maxAmount, category, email, dateFrom, dateTo) {
@@ -72,11 +72,11 @@
           'dateTo': dateTo
         }
 			};
-			return $http.post(config.beUrl + '/limits/add', addLimitReq).then(resolve)
+			return $http.post(config.beUrl + '/limits/add', addLimitReq).then(onSuccess, onError);
 		}
 		
 		function deleteLimit(id) {
-			return $http.delete(config.beUrl + '/limit/delete/' + id).then(resolve);
+			return $http.delete(config.beUrl + '/limit/delete/' + id).then(onSuccess, onError);
 		}
 
 		function addOperation(email, title, amount, category, type) {
@@ -90,11 +90,11 @@
         }
 		  };
 
-      return $http.post(config.beUrl + '/operations/add', operation).then(resolve)
+      return $http.post(config.beUrl + '/operations/add', operation).then(onSuccess, onError)
     }
 		
 		function getBankAccount(id) {
-			return $http.get(config.bankingUrl + '/account/get/' + id).then(resolve);
+			return $http.get(config.bankingUrl + '/account/get/' + id).then(onSuccess, onError);
 		}
 		
 		function getOperations(email) {
@@ -102,7 +102,7 @@
 		    'email': email
       };
 
-			return $http.post(config.beUrl+ '/operations/get', getAllOpReq).then(resolve);
+			return $http.post(config.beUrl+ '/operations/get', getAllOpReq).then(onSuccess, onError);
 		}
 		
 		function getOperationsByType(id, type) {
@@ -110,13 +110,16 @@
 					'accountId': id,
 					'type': type
 			};
-			return $http.post(config.bankingUrl + '/operation/get/type', JSON.stringify(operation), {headers: {'Content-Type': 'application/json'}}).then(resolve);
+			return $http.post(config.bankingUrl + '/operation/get/type', JSON.stringify(operation), {headers: {'Content-Type': 'application/json'}}).then(onSuccess, onError);
 		}
 		
-		function resolve(response) {
+		function onSuccess(response) {
 			return response.data;
 		}
-		
+
+		function onError(response) {
+			return 400;
+		}
 	}
 
 })();

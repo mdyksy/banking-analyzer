@@ -1,0 +1,36 @@
+<ion-modal-view>
+    <form name="registerForm" id="registerForm">
+      <ion-title>
+        <h4>Rejestracja</h4>
+      </ion-title>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="Email" ng-model="vm.email" required>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Imię</span>
+          <input type="text" placeholder="Imię" ng-model="vm.firstName" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Nazwisko</span>
+            <input type="text" placeholder="Nazwisko" ng-model="vm.surName" required>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Hasło</span>
+          <input type="text" placeholder="Hasło" ng-model="vm.password" required>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Stan portfela</span>
+          <input type="text" placeholder="0 zł" ng-model="vm.walletBalance" required>
+        </label>
+        <div class="modal-button">
+          <button class="button button-energized" ng-disabled="registerForm.$invalid"
+                  ng-click="vm.registerUser(vm.email, vm.firstName, vm.surName, vm.password, vm.walletBalance)">Załóż konto</button>
+          <button class="button button-energized"
+                  ng-click="vm.closeRegisterModal()">Anuluj</button>
+        </div>
+      </div>
+    </form>
+  </ion-modal-view>
+  
