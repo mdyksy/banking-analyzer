@@ -19,9 +19,18 @@
 			deleteLimit: deleteLimit,
 			getBankAccount: getBankAccount,
 			getOperations: getOperations,
-			getOperationsByType: getOperationsByType
+			getOperationsByType: getOperationsByType,
+			login: login
 		};
 		return service;
+
+		function login() {
+			let user = {
+				'email': email,
+				'password': password
+			};
+			return $http.post(config.beUrl + '/user/login', user).then(onSuccess, onError);
+		}
 
 		function getCategories() {
 		  return $http.get(config.beUrl + '/dict/categories').then(onSuccess, onError);
@@ -118,7 +127,7 @@
 		}
 
 		function onError(response) {
-			return 400;
+			return null;
 		}
 	}
 

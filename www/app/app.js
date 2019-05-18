@@ -32,12 +32,12 @@
 					templateUrl : 'app/layout/menu.html'
 				})
 
-				.state('app.login', {
-					url : '/login',
+				.state('app.user', {
+					url : '/user',
 					views : {
 						'menuContent' : {
-							templateUrl : 'app/login/login.view.html',
-							controller : 'LoginController',
+							templateUrl : 'app/user/login.view.html',
+							controller : 'UserController',
 							controllerAs : 'vm'
 						}
 					}
@@ -96,7 +96,7 @@
 					}
 				});
 			// if none of the above states are matched, use this as the fallback
-			$urlRouterProvider.otherwise('/app/login');
+			$urlRouterProvider.otherwise('/app/user');
 		});
 
 })();
