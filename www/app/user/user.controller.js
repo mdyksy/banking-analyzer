@@ -11,8 +11,12 @@
       vm.closeRegisterModal = closeRegisterModal;
       vm.openResendPassModal = openResendPassModal;
       vm.closeResendPassModal = closeResendPassModal;
+      vm.openResetPassModal = openResetPassModal;
+      vm.closeResetPassModal = closeResetPassModal;
       vm.register = register;
       vm.login = login;
+      vm.resend = resend;
+      vm.resetPassword = resetPassword;
 
       function login(email, password) {
         restFactory.login(email, password).then(
@@ -22,6 +26,32 @@
               
               vm.email = '';
               vm.password = '';
+            } else {
+              
+            }
+          });
+      }
+
+      function resend(email) {
+        restFactory.resendPassword(email).then(
+          function(val) {
+            if(val !== null) {
+              closeResendPassModal();
+              openResetPassModal();
+              vm.email = '';
+            } else {
+
+            }
+          });
+      }
+
+      function resetPassword(email) {
+        restFactory.resetPassword(email).then(
+          function(val) {
+            if(val !== null) {
+              closeResetPassModal();
+              
+              vm.email = '';
             } else {
               
             }
@@ -58,6 +88,12 @@
         vm.resendPassModal = modal;
       });
   
+      $ionicModal.fromTemplateUrl('app/user/resetPass.modal.view.html', {
+        scope: $scope
+      }).then(function(modal) {
+        vm.resetPassModal = modal;
+      });
+
       function openRegisterModal(){
         vm.registerModal.show();
       }
@@ -71,6 +107,14 @@
       }
   
       function closeResendPassModal() {
+        vm.resendPassModal.hide();
+      }
+
+      function openResetPassModal(){
+        vm.resendPassModal.show();
+      }
+  
+      function closeResetPassModal() {
         vm.resendPassModal.hide();
       }
     }

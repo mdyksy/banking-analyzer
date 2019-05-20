@@ -20,11 +20,26 @@
 			getBankAccount: getBankAccount,
 			getOperations: getOperations,
 			getOperationsByType: getOperationsByType,
-			login: login
+			login: login,
+			resendPassword: resendPassword,
+			resetPassword: resetPassword
 		};
 		return service;
 
-		function login() {
+		function resendPassword(email) {
+			return $http.get(config.beUrl + '/password/reset/' + email).then(onSuccess, onError);
+		}
+
+		function resetPassword(email, token, password) {
+			let data = {
+				'email': email,
+				'token': token,
+				'password': password
+			};
+			return $http.post(config.beUrl + '/password/reset', data).then(onSuccess, onError);
+		}
+
+		function login(email, password) {
 			let user = {
 				'email': email,
 				'password': password

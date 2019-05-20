@@ -1,0 +1,19 @@
+<ion-modal-view>
+    <form name="resendForm" id="resendForm">
+      <ion-title>
+        <h4>Przypomnienie hasła</h4>
+      </ion-title>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="Email" ng-model="vm.email" required>
+        </label>
+        <div class="modal-button">
+          <button class="button button-energized" ng-disabled="resendForm.$invalid"
+                  ng-click="vm.resend(vm.email)">Przypomnij hasło</button>
+          <button class="button button-energized"
+                  ng-click="vm.closeRegisterModal()">Anuluj</button>
+        </div>
+      </div>
+    </form>
+</ion-modal-view>
