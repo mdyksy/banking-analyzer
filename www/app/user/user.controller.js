@@ -111,11 +111,11 @@
       }
 
       function openResetPassModal(){
-        vm.resendPassModal.show();
+        vm.resetPassModal.show();
       }
   
       function closeResetPassModal() {
-        vm.resendPassModal.hide();
+        vm.resetPassModal.hide();
       }
     }
   })();
