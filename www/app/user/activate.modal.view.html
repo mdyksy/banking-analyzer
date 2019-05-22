@@ -1,0 +1,23 @@
+<ion-modal-view>
+    <form name="activateForm" id="activateForm">
+      <ion-title>
+        <h4>Aktywacja konta</h4>
+      </ion-title>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="Email" ng-model="vm.email" required>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Token</span>
+          <input type="text" placeholder="Token" ng-model="vm.token" required>
+        </label>
+        <div class="modal-button">
+          <button class="button button-energized" ng-disabled="activateForm.$invalid"
+                  ng-click="vm.activateAccount(vm.email, vm.token)">Aktywuj konto</button>
+          <button class="button button-energized"
+                  ng-click="vm.closeActivateModal()">Anuluj</button>
+        </div>
+      </div>
+    </form>
+</ion-modal-view>

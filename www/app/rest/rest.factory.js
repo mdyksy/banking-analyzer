@@ -13,21 +13,28 @@
       addOperation: addOperation,
 			deleteUser: deleteUser,
 			addUser: addUser,
-			getLimitByCategory: getLimitByCategory,
 			getLimits: getLimits,
 			addLimit: addLimit,
 			deleteLimit: deleteLimit,
 			getBankAccount: getBankAccount,
 			getOperations: getOperations,
-			getOperationsByType: getOperationsByType,
 			login: login,
 			resendPassword: resendPassword,
-			resetPassword: resetPassword
+			resetPassword: resetPassword,
+			activateAccount: activateAccount
 		};
 		return service;
 
 		function resendPassword(email) {
 			return $http.get(config.beUrl + '/password/reset/' + email).then(onSuccess, onError);
+		}
+
+		function activateAccount(email, token) {
+			let data = {
+				'email': email,
+				'token': token				
+			};
+			return $http.post(config.beUrl + '/user/activate', data).then(onSuccess, onError);
 		}
 
 		function resetPassword(email, token, password) {
@@ -68,14 +75,6 @@
 					'walletBalance': walletBalance
 			};
 			return $http.post(config.beUrl + '/user/register', user).then(onSuccess, onError);
-		}
-
-		function getLimitByCategory(category, user) {
-			let limit = {
-					'category': category,
-					'user': user
-			};
-			return $http.post(config.beUrl + '/limit/get/category', JSON.stringify(limit)).then(onSuccess, onError);
 		}
 		
 		function getLimits(email) {
@@ -127,14 +126,6 @@
       };
 
 			return $http.post(config.beUrl+ '/operations/get', getAllOpReq).then(onSuccess, onError);
-		}
-		
-		function getOperationsByType(id, type) {
-			let operation = {
-					'accountId': id,
-					'type': type
-			};
-			return $http.post(config.bankingUrl + '/operation/get/type', JSON.stringify(operation), {headers: {'Content-Type': 'application/json'}}).then(onSuccess, onError);
 		}
 		
 		function onSuccess(response) {

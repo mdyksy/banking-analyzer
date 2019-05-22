@@ -27,9 +27,7 @@
 		function activate() {
       getUserByEmail(email);
       getOperations()
-        .then(convertOperationsToChart);
-      getOperations()
-        .then(setAllOperations);
+        .then(prepareOperations);
 		}
 
     function getUserByEmail(email) {
@@ -38,6 +36,11 @@
         vm.user = user;
         vm.sum = user.walletBalance;
       });
+    }
+
+    function prepareOperations(operations) {
+      setAllOperations(operations);
+      convertOperationsToChart(operations);
     }
 
     function setAllOperations(operations) {
