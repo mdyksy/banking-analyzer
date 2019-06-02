@@ -23,24 +23,20 @@
 
 		.config(function($stateProvider, $urlRouterProvider) {
 			$stateProvider
-				.state('app', {
-					url : '/app',
-					abstract : true,
-					templateUrl : 'app/layout/menu.html',
-					controller : 'MenuController',
+				.state('login', {
+					url : '/',		
+					templateUrl : 'app/user/login.view.html',
+					controller : 'UserController',
 					controllerAs : 'vm'
 				})
 
-				.state('app.user', {
-					url : '/user',
-					views : {
-						'menuContent' : {
-							templateUrl : 'app/user/login.view.html',
-							controller : 'UserController',
-							controllerAs : 'vm'
-						}
-					}
-				})
+				.state('app', {
+						url : '/app',
+						abstract : true,
+						templateUrl : 'app/layout/menu.html',
+						controller : 'MenuController',
+						controllerAs : 'vm'
+					})
 
 				.state('app.overview', {
 					url : '/overview',
@@ -94,6 +90,6 @@
 						}
 					}
 				});
-			$urlRouterProvider.otherwise('/app/user');
+			$urlRouterProvider.otherwise('/');
 		});
 })();

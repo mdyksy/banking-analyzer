@@ -17,8 +17,8 @@
         <span class="input-label">Hasło</span>
         <input type="password" name="password" placeholder="Hasło" ng-model="vm.password" required ng-minlength="9" 
           ng-maxlength="19">
-        <span ng-show="(loginForm.password.$error.minlength || loginForm.password.$error.maxlength) &&
-          loginForm.password.$touched" class="error">Niepoprawne hasło!
+        <span ng-show="loginForm.password.$error.minlength || loginForm.password.$error.maxlength ||
+          loginForm.password.$touched && loginForm.password.$invalid" class="error">Niepoprawne hasło!
         </span>
       </label>
       <div class="modal-button">
