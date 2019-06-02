@@ -1,29 +1,38 @@
 <ion-modal-view>
- 		<form name="expenseForm" id="expenseForm">
-		  	<ion-title>
-  				<h4>Dodaj nowy wydatek</h4>
-  			</ion-title>
- 			<div class="list">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Tytuł</span>
-          <input type="text" placeholder="Tytuł" ng-model="vm.title" required>
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Kwota</span>
-         <input type="text" placeholder="Kwota" ng-model="vm.amount" required>
-        </label>
-        <label class="item item-select">
-          <span class="select-label">Kategoria</span>
-          <select ng-model="vm.category" required>
-            <option ng-repeat="c in vm.categories">{{ c }}</option>
-          </select>
-        </label>
-        <div class="modal-button">
-          <button class="button button-energized" ng-disabled="expenseForm.$invalid"
-                  ng-click="vm.addExpense(vm.title, vm.amount, vm.category)">Dodaj</button>
-          <button class="button button-energized"
-                  ng-click="vm.closeModal()">Anuluj</button>
-        </div>
- 			</div>
- 		</form>
+  <form name="expenseForm" id="expenseForm">
+      <ion-title>
+        <h4>Dodaj nowy wydatek</h4>
+      </ion-title>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Tytuł</span>
+        <input type="text" name="title" placeholder="Tytuł" ng-model="vm.title" required>
+        <p ng-show="expenseForm.title.$invalid && expenseForm.title.$touched" class="error">
+          Tytuł nie może być pusty!
+        </p>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Kwota</span>
+        <input type="text" name="amount" placeholder="Kwota" ng-model="vm.amount" required>
+        <p ng-show="expenseForm.amount.$invalid && expenseForm.amount.$touched" class="error">
+          Podaj kwotę większą niż 0!
+        </p>
+      </label>
+      <label class="item item-select">
+        <span class="select-label">Kategoria</span>
+        <select name="category" ng-model="vm.category" required>
+          <option ng-repeat="c in vm.categories">{{ c }}</option>
+        </select>
+        <p ng-show="expenseForm.category.$invalid && expenseForm.category.$touched" class="error">
+          Wybierz kategorię!
+        </p>
+      </label>
+      <div class="modal-button">
+        <button class="button button-energized" ng-disabled="expenseForm.$invalid"
+          ng-click="vm.addExpense(vm.title, vm.amount, vm.category)">Dodaj</button>
+        <button class="button button-energized"
+          ng-click="vm.closeModal()">Anuluj</button>
+      </div>
+    </div>
+  </form>
 </ion-modal-view>

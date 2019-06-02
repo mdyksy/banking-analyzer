@@ -12,11 +12,16 @@ ion-list ion-item ion-note {
 }
 
 select option:empty {
-	display: none
+	display: none;
 }
 
 select {
 	text-transform: capitalize;
+}
+
+.error {
+	color: red;
+	font-size: 10px;
 }
 
 ion-list ion-item ion-note:nth-child(2) {

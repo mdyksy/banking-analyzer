@@ -5,13 +5,13 @@
 
 	menuController.$inject = [ '$state'];
 	function menuController($state) {
-        let vm = this;
+    let vm = this;
         
-        vm.logout = logout;
+    vm.logout = logout;
 
-        function logout() {       
-            console.log('log');
-            $state.go('app.user');
-        }
+    function logout() {       
+        console.log('log');
+        $state.go('app.user');
     }
+  }
 })();

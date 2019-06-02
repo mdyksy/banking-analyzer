@@ -1,36 +1,50 @@
 <ion-modal-view>
-    <form name="registerForm" id="registerForm">
-      <ion-title>
-        <h4>Rejestracja</h4>
-      </ion-title>
-      <div class="list">
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Email</span>
-            <input type="text" placeholder="Email" ng-model="vm.email" required>
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Imię</span>
-          <input type="text" placeholder="Imię" ng-model="vm.firstName" required>
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Nazwisko</span>
-            <input type="text" placeholder="Nazwisko" ng-model="vm.surName" required>
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Hasło</span>
-          <input type="text" placeholder="Hasło" ng-model="vm.password" required>
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Stan portfela</span>
-          <input type="text" placeholder="0 zł" ng-model="vm.walletBalance" required>
-        </label>
-        <div class="modal-button">
-          <button class="button button-energized" ng-disabled="registerForm.$invalid"
-                  ng-click="vm.register(vm.email, vm.firstName, vm.surName, vm.password, vm.walletBalance)">Załóż konto</button>
-          <button class="button button-energized"
-                  ng-click="vm.closeRegisterModal()">Anuluj</button>
-        </div>
+  <form name="registerForm" id="registerForm">
+    <ion-title>
+      <h4>Rejestracja</h4>
+    </ion-title>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="email" name="email" placeholder="Email" ng-model="vm.email" required ng-minlength="7"
+          ng-maxlength="32">
+        <p ng-show="registerForm.email.$error.minlength || registerForm.email.$error.maxlength ||
+          registerForm.email.$invalid && registerForm.email.$touched" class="error">Niepoprawny adres email!
+        </p>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Imię</span>
+        <input type="text" name="firstName" placeholder="Imię" ng-model="vm.firstName" required ng-minlength="3"
+          ng-maxlength="19">
+        <p ng-show="registerForm.firstName.$error.minlength || registerForm.firstName.$error.maxlength ||
+          registerForm.firstName.$invalid && registerForm.firstName.$touched" class="error">Niepoprawne imię!
+        </p>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Nazwisko</span>
+        <input type="text" name="surName" placeholder="Nazwisko" ng-model="vm.surName" required ng-minlength="3"
+          ng-maxlength="19">
+        <p ng-show="registerForm.surName.$error.minlength || registerForm.surName.$error.maxlength ||
+          registerForm.surName.$invalid && registerForm.surName.$touched" class="error">Niepoprawne nazwisko!
+        </p>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Hasło</span>
+        <input type="password" name="password" placeholder="Hasło" ng-model="vm.password" required>
+        <p ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.maxlength) &&
+          registerForm.password.$touched" class="error">Niepoprawne hasło!
+        </p>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Stan portfela</span>
+        <input type="text" placeholder="0 zł" ng-model="vm.walletBalance" required>
+      </label>
+      <div class="modal-button">
+        <button class="button button-energized" ng-disabled="registerForm.$invalid"
+          ng-click="vm.register(vm.email, vm.firstName, vm.surName, vm.password, vm.walletBalance)">Załóż konto</button>
+        <button class="button button-energized"
+          ng-click="vm.closeRegisterModal()">Anuluj</button>
       </div>
-    </form>
-  </ion-modal-view>
-  
+    </div>
+  </form>
+</ion-modal-view>

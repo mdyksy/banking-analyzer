@@ -1,27 +1,27 @@
 <ion-modal-view>
-    <form name="resetForm" id="resetForm">
-      <ion-title>
-        <h4>Resetowanie hasła</h4>
-      </ion-title>
-      <div class="list">
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Email</span>
-            <input type="text" placeholder="Email" ng-model="vm.email" required>
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Hasło</span>
-          <input type="text" placeholder="Hasło" ng-model="vm.password" required>
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Token</span>
-          <input type="text" placeholder="Token" ng-model="vm.token" required>
-        </label>
-        <div class="modal-button">
-          <button class="button button-energized" ng-disabled="resetForm.$invalid"
-                  ng-click="vm.resetPassword(vm.email, vm.password, vm.token)">Resetuj hasło</button>
-          <button class="button button-energized"
-                  ng-click="vm.closeResetPassModal()">Anuluj</button>
-        </div>
+  <form name="resetForm" id="resetForm">
+    <ion-title>
+      <h4>Resetowanie hasła</h4>
+    </ion-title>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="text" placeholder="Email" ng-model="vm.email" required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Hasło</span>
+        <input type="password" placeholder="Hasło" ng-model="vm.password" required>
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Token</span>
+        <input type="text" placeholder="Token" ng-model="vm.token" required>
+      </label>
+      <div class="modal-button">
+        <button class="button button-energized" ng-disabled="resetForm.$invalid"
+          ng-click="vm.resetPassword(vm.email, vm.password, vm.token)">Resetuj hasło</button>
+        <button class="button button-energized"
+          ng-click="vm.closeResetPassModal()">Anuluj</button>
       </div>
-    </form>
+    </div>
+  </form>
 </ion-modal-view>

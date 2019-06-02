@@ -35,6 +35,7 @@
       restFactory.getUser(email).then(function(user) {
         vm.user = user;
         vm.sum = user.walletBalance;
+        console.log(user);
       });
     }
 

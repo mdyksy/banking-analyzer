@@ -1,19 +1,23 @@
 <ion-modal-view>
-    <form name="resendForm" id="resendForm">
-      <ion-title>
-        <h4>Przypomnienie hasła</h4>
-      </ion-title>
-      <div class="list">
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Email</span>
-            <input type="text" placeholder="Email" ng-model="vm.email" required>
-        </label>
-        <div class="modal-button">
-          <button class="button button-energized" ng-disabled="resendForm.$invalid"
-                  ng-click="vm.resend(vm.email)">Przypomnij hasło</button>
-          <button class="button button-energized"
-                  ng-click="vm.closeResendPassModal()">Anuluj</button>
-        </div>
+  <form name="resendForm" id="resendForm">
+    <ion-title>
+      <h4>Przypomnienie hasła</h4>
+    </ion-title>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="email" name="email" placeholder="Email" ng-model="vm.email" required ng-minlength="7"
+          ng-maxlength="32">
+        <p ng-show="resendForm.email.$error.minlength || resendForm.email.$error.maxlength ||
+          resendForm.email.$invalid && resendForm.email.$touched" class="error">Niepoprawny adres email!
+        </p>
+      </label>
+      <div class="modal-button">
+        <button class="button button-energized" ng-disabled="resendForm.$invalid"
+          ng-click="vm.resend(vm.email)">Przypomnij hasło</button>
+        <button class="button button-energized"
+          ng-click="vm.closeResendPassModal()">Anuluj</button>
       </div>
-    </form>
+    </div>
+  </form>
 </ion-modal-view>

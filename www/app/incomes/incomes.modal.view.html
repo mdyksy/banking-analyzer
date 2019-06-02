@@ -6,11 +6,17 @@
  			<div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label">Tytuł</span>
-          <input type="text" placeholder="Tytuł" ng-model="vm.title" required>
+          <input type="text" name="title" placeholder="Tytuł" ng-model="vm.title" required>
+          <p ng-show="incomeForm.title.$invalid && incomeForm.title.$touched" class="error">
+            Tytuł nie może być pusty!
+          </p>
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Kwota</span>
-         <input type="text" placeholder="Kwota" ng-model="vm.amount" required>
+          <input type="text" name="amount" placeholder="Kwota" ng-model="vm.amount" required>
+          <p ng-show="incomeForm.amount.$invalid && incomeForm.amount.$touched" class="error">
+            Podaj kwotę większą niż 0!
+          </p>
         </label>
         <div class="modal-button">
           <button class="button button-energized" ng-disabled="incomeForm.$invalid"
