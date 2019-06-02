@@ -6,15 +6,25 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label">Email</span>
-        <input type="text" placeholder="Email" ng-model="vm.email" required>
+        <input type="email" name="email" placeholder="Email" ng-model="vm.email" required ng-minlength="7"
+          ng-maxlength="32">
+        <span ng-show="resetForm.email.$error.minlength || resetForm.email.$error.maxlength ||
+          resetForm.email.$invalid && resetForm.email.$touched" class="error">Niepoprawny adres email!
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Hasło</span>
         <input type="password" placeholder="Hasło" ng-model="vm.password" required>
+        <span ng-show="(resetForm.password.$error.minlength || resetForm.password.$error.maxlength) &&
+          resetForm.password.$touched" class="error">Niepoprawne hasło!
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Token</span>
         <input type="text" placeholder="Token" ng-model="vm.token" required>
+        <span ng-show="resetForm.token.$error.$touched && resetForm.token.$error.$dirty" class="error">
+          Niepoprawny token!
+        </span>
       </label>
       <div class="modal-button">
         <button class="button button-energized" ng-disabled="resetForm.$invalid"

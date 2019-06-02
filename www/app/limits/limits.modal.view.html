@@ -13,23 +13,23 @@
         <select name="category" ng-model="vm.category" required>
           <option ng-repeat="c in vm.categories">{{ c }}</option>
         </select>
-        <p ng-show="limitForm.category.$invalid && limitForm.category.$touched" class="error">
+        <span ng-show="limitForm.category.$invalid && limitForm.category.$touched" class="error">
           Wybierz kategorię!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Data od</span>
         <input type="text" name="dateFrom" placeholder="Data od" ng-model="vm.dateFrom" required ng-pattern="\d{4}-\d{2}-\d{2}">
-        <p ng-show="limitForm.dateFrom.$invalid && limitForm.dateFrom.$touched" class="error">
+        <span ng-show="limitForm.dateFrom.$invalid && limitForm.dateFrom.$touched" class="error">
           Niepoprawny format daty!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Data do</span>
         <input type="text" name="dateTo" placeholder="Data do" ng-model="vm.dateTo" required ng-pattern="/\d{4}-\d{2}-\d{2}$/">
-        <p ng-show="limitForm.dateTo.$invalid && limitForm.dateTo.$touched" class="error">
+        <span ng-show="limitForm.dateTo.$invalid && limitForm.dateTo.$touched" class="error">
           Niepoprawny format daty!
-        </p>
+        </span>
       </label>
       <div class="modal-button">
         <button class="button button-energized" ng-disabled="limitForm.$invalid"

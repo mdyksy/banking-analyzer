@@ -8,16 +8,16 @@
         <span class="input-label">Email</span>
         <input type="email" name="email" placeholder="Email" ng-model="vm.email" required ng-minlength="7"
           ng-maxlength="32">
-        <p ng-show="activateForm.email.$error.minlength || activateForm.email.$error.maxlength ||
+        <span ng-show="activateForm.email.$error.minlength || activateForm.email.$error.maxlength ||
           activateForm.email.$invalid && activateForm.email.$touched" class="error">Niepoprawny adres email!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Token</span>
         <input type="text" name="token" placeholder="Token" ng-model="vm.token" required>
-        <p ng-show="activateForm.token.$error.$touched && activateForm.token.$error.$dirty" class="error">
+        <span ng-show="activateForm.token.$error.$touched && activateForm.token.$error.$dirty" class="error">
           Niepoprawny token aktywacyjny!
-        </p>
+        </span>
       </label>
       <div class="modal-button">
         <button class="button button-energized" ng-disabled="activateForm.$invalid"

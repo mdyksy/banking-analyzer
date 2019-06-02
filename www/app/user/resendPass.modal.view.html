@@ -8,9 +8,9 @@
         <span class="input-label">Email</span>
         <input type="email" name="email" placeholder="Email" ng-model="vm.email" required ng-minlength="7"
           ng-maxlength="32">
-        <p ng-show="resendForm.email.$error.minlength || resendForm.email.$error.maxlength ||
+        <span ng-show="resendForm.email.$error.minlength || resendForm.email.$error.maxlength ||
           resendForm.email.$invalid && resendForm.email.$touched" class="error">Niepoprawny adres email!
-        </p>
+        </span>
       </label>
       <div class="modal-button">
         <button class="button button-energized" ng-disabled="resendForm.$invalid"

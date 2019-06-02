@@ -8,32 +8,32 @@
         <span class="input-label">Email</span>
         <input type="email" name="email" placeholder="Email" ng-model="vm.email" required ng-minlength="7"
           ng-maxlength="32">
-        <p ng-show="registerForm.email.$error.minlength || registerForm.email.$error.maxlength ||
+        <span ng-show="registerForm.email.$error.minlength || registerForm.email.$error.maxlength ||
           registerForm.email.$invalid && registerForm.email.$touched" class="error">Niepoprawny adres email!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Imię</span>
         <input type="text" name="firstName" placeholder="Imię" ng-model="vm.firstName" required ng-minlength="3"
           ng-maxlength="19">
-        <p ng-show="registerForm.firstName.$error.minlength || registerForm.firstName.$error.maxlength ||
+        <span ng-show="registerForm.firstName.$error.minlength || registerForm.firstName.$error.maxlength ||
           registerForm.firstName.$invalid && registerForm.firstName.$touched" class="error">Niepoprawne imię!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Nazwisko</span>
         <input type="text" name="surName" placeholder="Nazwisko" ng-model="vm.surName" required ng-minlength="3"
           ng-maxlength="19">
-        <p ng-show="registerForm.surName.$error.minlength || registerForm.surName.$error.maxlength ||
+        <span ng-show="registerForm.surName.$error.minlength || registerForm.surName.$error.maxlength ||
           registerForm.surName.$invalid && registerForm.surName.$touched" class="error">Niepoprawne nazwisko!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Hasło</span>
         <input type="password" name="password" placeholder="Hasło" ng-model="vm.password" required>
-        <p ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.maxlength) &&
+        <span ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.maxlength) &&
           registerForm.password.$touched" class="error">Niepoprawne hasło!
-        </p>
+        </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Stan portfela</span>
