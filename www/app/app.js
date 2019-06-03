@@ -33,9 +33,7 @@
 				.state('app', {
 						url : '/app',
 						abstract : true,
-						templateUrl : 'app/layout/menu.html',
-						controller : 'MenuController',
-						controllerAs : 'vm'
+						templateUrl : 'app/layout/menu.html'
 					})
 
 				.state('app.overview', {

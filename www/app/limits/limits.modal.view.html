@@ -6,7 +6,10 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label">Kwota</span>
-        <input type="text" placeholder="Kwota" ng-model="vm.maxAmount" required>
+        <input type="number" name="amount" placeholder="Kwota" ng-model="vm.maxAmount" required ng-pattern="^(\d*\.)?\d+$">
+        <span ng-show="limitForm.amount.$invalid && limitForm.amount.$touched" class="error">
+          Niepoprawna kwota!
+        </span>
       </label>
       <label class="item item-select">
         <span class="select-label">Kategoria</span>

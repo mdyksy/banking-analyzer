@@ -11,6 +11,11 @@ ion-list ion-item ion-note {
 	vertical-align: middle;
 }
 
+.main-img {
+	width: 100%;
+	height: 100%;
+}
+
 select option:empty {
 	display: none;
 }
@@ -75,14 +80,9 @@ ion-side-menu .icon {
 	background-color: white;
 }
 
-.modal-wrapper .modal button {
-    margin: auto;
-    position: relative;
-    display: list-item;
-}
-
-.modal-wrapper .modal-button {
+.modal-button {
 	padding: 6px;
+	text-align: center;
 }
 
 .modal-wrapper .input-label {

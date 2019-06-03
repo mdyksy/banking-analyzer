@@ -4,13 +4,13 @@
         <h4>Logowanie</h4>
     </ion-title>
     <div class="list">
-      grafika
+      <img src="img/finanse.jpg" class="main-img">
       <label class="item item-input item-floating-label">
         <span class="input-label">Nazwa użytkownika</span>
         <input type="email" name="email" placeholder="Nazwa użytkownika" ng-model="vm.email" required ng-minlength="7"
             ng-maxlength="32">
         <span ng-show="loginForm.email.$error.minlength || loginForm.email.$error.maxlength ||
-          loginForm.email.$invalid && loginForm.email.$touched" class="error">Niepoprawna nazwa użytkownika!
+          loginForm.email.$invalid && loginForm.email.$dirty" class="error">Niepoprawna nazwa użytkownika!
         </span>
       </label>
       <label class="item item-input item-floating-label">

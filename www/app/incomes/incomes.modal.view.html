@@ -13,9 +13,9 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Kwota</span>
-          <input type="text" name="amount" placeholder="Kwota" ng-model="vm.amount" required>
+          <input type="number" name="amount" placeholder="Kwota" ng-model="vm.amount" required ng-pattern="^(\d*\.)?\d+$">
           <span ng-show="incomeForm.amount.$invalid && incomeForm.amount.$touched" class="error">
-            Podaj kwotę większą niż 0!
+            Niepoprawna kwota!
           </span>
         </label>
         <div class="modal-button">
