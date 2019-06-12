@@ -6,7 +6,7 @@
 	expensesController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
 	function expensesController(restFactory, $ionicModal, $scope) {
 		let vm = this;
-		let email = 'm.dyksy95@gmail.com';
+		let email = $scope.login;
     const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
       'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
 		

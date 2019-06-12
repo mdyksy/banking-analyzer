@@ -41,11 +41,12 @@
         function(val) {
           if(val !== null) {
             $state.go('app.overview');
+            $scope.login = email;
             
             vm.email = '';
             vm.password = '';
           } else {
-            
+            console.log('error');
           }
         });
     }

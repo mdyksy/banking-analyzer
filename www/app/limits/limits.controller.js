@@ -6,7 +6,7 @@
   limitsController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
   function limitsController(restFactory, $ionicModal, $scope) {
     let vm = this;
-    let email = 'm.dyksy95@gmail.com';
+    let email = $scope.login;
 
     vm.categories = {};
     vm.limits = [];

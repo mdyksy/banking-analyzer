@@ -3,10 +3,10 @@
 
 	angular.module('banalyzer').controller('OverviewController', overviewController);
 
-	overviewController.$inject = [ 'restFactory' ];
-	function overviewController(restFactory) {
+	overviewController.$inject = [ 'restFactory', '$scope' ];
+	function overviewController(restFactory, $scope) {
 		let vm = this;
-		let email = "m.dyksy95@gmail.com";
+		let email = $scope.login;
 
     vm.sum = 0;
 		vm.bankAccounts = [];

@@ -30,9 +30,9 @@
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Hasło</span>
-        <input type="password" name="password" placeholder="Hasło" ng-model="vm.password" required>
+        <input type="password" name="password" placeholder="Hasło" ng-model="vm.password" required ng-minlength="8">
         <span ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.maxlength) &&
-          registerForm.password.$touched" class="error">Niepoprawne hasło!
+          registerForm.password.$touched || registerForm.password.$invalid" class="error">Niepoprawne hasło!
         </span>
       </label>
       <label class="item item-input item-floating-label">

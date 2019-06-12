@@ -15,7 +15,7 @@
       <label class="item item-input item-floating-label">
         <span class="input-label">Token</span>
         <input type="text" name="token" placeholder="Token" ng-model="vm.token" required>
-        <span ng-show="activateForm.token.$error.$touched && activateForm.token.$error.$dirty" class="error">
+        <span ng-show="activateForm.token.$touched && activateForm.token.$invalid" class="error">
           Niepoprawny token aktywacyjny!
         </span>
       </label>
