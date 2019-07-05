@@ -15,7 +15,8 @@
 		vm.colors = ['#ff541c', '#99ff99'];
 		vm.labels = ['Wydatki (zł)', 'Przychody (zł)'];
 		vm.series = ['Podsumowanie'];
-		vm.data = [0, 0];
+    vm.data = [0, 0];
+    vm.refresh = activate;
 
 		let headers = {
 				'Content-Type': 'application/json',
