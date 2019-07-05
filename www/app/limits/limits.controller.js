@@ -3,10 +3,10 @@
 
   angular.module('banalyzer').controller('LimitsController', limitsController);
 
-  limitsController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
-  function limitsController(restFactory, $ionicModal, $scope) {
+  limitsController.$inject = [ 'restFactory', '$ionicModal', '$scope', '$rootScope'];
+  function limitsController(restFactory, $ionicModal, $scope, $rootScope) {
     let vm = this;
-    let email = $scope.login;
+    let email = $rootScope.login;
 
     vm.categories = {};
     vm.limits = [];

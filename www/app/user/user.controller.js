@@ -3,8 +3,8 @@
 
   angular.module('banalyzer').controller('UserController', userController);
 
-  userController.$inject = [ 'restFactory', '$ionicModal', '$scope', '$state'];
-  function userController(restFactory, $ionicModal, $scope, $state) {
+  userController.$inject = [ 'restFactory', '$ionicModal', '$rootScope', '$scope', '$state'];
+  function userController(restFactory, $ionicModal, $rootScope, $scope, $state) {
     let vm = this;
 
     vm.openRegisterModal = openRegisterModal;
@@ -25,6 +25,7 @@
       restFactory.activateAccount(email, token).then(
         function(val) {
           if(val !== null) {
+            $rootScope.login = email;
             $state.go('app.overview');
             closeActivateModal();
 
@@ -41,7 +42,7 @@
         function(val) {
           if(val !== null) {
             $state.go('app.overview');
-            $scope.login = email;
+            $rootScope.login = email;
             
             vm.email = '';
             vm.password = '';

@@ -31,13 +31,13 @@
       <label class="item item-input item-floating-label">
         <span class="input-label">Hasło</span>
         <input type="password" name="password" placeholder="Hasło" ng-model="vm.password" required ng-minlength="8">
-        <span ng-show="(registerForm.password.$error.minlength || registerForm.password.$error.maxlength) &&
-          registerForm.password.$touched || registerForm.password.$invalid" class="error">Niepoprawne hasło!
+        <span ng-show="registerForm.password.$error.minlength || registerForm.password.$error.maxlength ||
+          registerForm.password.$invalid && registerForm.password.$touched" class="error">Niepoprawne hasło!
         </span>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Stan portfela</span>
-        <input type="number" name="balance" placeholder="0 zł" ng-model="vm.walletBalance" required ng-pattern="^(\d*\.)?\d+$">
+        <input type="number" name="balance" placeholder="0 zł" ng-model="vm.walletBalance" required>
         <span ng-show="registerForm.balance.$invalid && registerForm.balance.$touched" class="error">
           Niepoprawna kwota!
         </span>

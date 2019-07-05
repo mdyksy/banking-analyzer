@@ -3,10 +3,10 @@
 	
 	angular.module('banalyzer').controller('ExpensesController', expensesController);
 	
-	expensesController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
-	function expensesController(restFactory, $ionicModal, $scope) {
+	expensesController.$inject = [ 'restFactory', '$ionicModal', '$scope', '$rootScope'];
+	function expensesController(restFactory, $ionicModal, $scope, $rootScope) {
 		let vm = this;
-		let email = $scope.login;
+		let email = $rootScope.login;
     const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
       'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
 		
@@ -15,12 +15,12 @@
 		vm.filteredOperations = [];
 		vm.categories = {};
 		vm.months = months;
-    vm.actualMonth = parseMonth();
+    	vm.actualMonth = parseMonth();
 		vm.addExpense = addExpense;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
 		vm.refresh = activate();
-    vm.filterOperations = filterOperations;
+    	vm.filterOperations = filterOperations;
 
 		$ionicModal.fromTemplateUrl('app/expenses/expenses.modal.view.html', {
 			scope: $scope

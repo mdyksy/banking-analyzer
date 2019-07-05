@@ -13,7 +13,7 @@
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Kwota</span>
-        <input type="number" name="amount" placeholder="Kwota" ng-model="vm.amount" required ng-pattern="^(\d*\.)?\d+$">
+        <input type="number" name="amount" placeholder="Kwota" ng-model="vm.amount" required>
         <span ng-show="expenseForm.amount.$invalid && expenseForm.amount.$touched" class="error">
           Niepoprawna kwota!
         </span>

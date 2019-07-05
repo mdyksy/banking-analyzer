@@ -5,12 +5,12 @@
 		.module('banalyzer')
 		.factory('restFactory', restFactory);
 
-	restFactory.$inject = [ '$http', 'config' ];
-	function restFactory($http, config) {
+	restFactory.$inject = [ '$http', 'config', '$state' ];
+	function restFactory($http, config, $state) {
 		let service = {
 			getUser : getUser,
-      getCategories: getCategories,
-      addOperation: addOperation,
+      		getCategories: getCategories,
+      		addOperation: addOperation,
 			deleteUser: deleteUser,
 			addUser: addUser,
 			getLimits: getLimits,
@@ -59,6 +59,9 @@
     }
 
 		function getUser(email) {
+			if (email == null) {
+				$state.go('login');		
+			}
 			return $http.get(config.beUrl + '/user/get/' + email).then(onSuccess, onError);
 		}
 		
@@ -68,11 +71,11 @@
 		
 		function addUser(email, firstName, surname, password, walletBalance) {
 			let user = {
-					'firstName': firstName,
-          'surname': surname,
-					'email' : email,
-					'password': password,
-					'walletBalance': walletBalance
+				'firstName': firstName,
+				'surname': surname,
+				'email' : email,
+				'password': password,
+				'walletBalance': walletBalance
 			};
 			return $http.post(config.beUrl + '/user/register', user).then(onSuccess, onError);
 		}

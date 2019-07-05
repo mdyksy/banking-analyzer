@@ -3,23 +3,22 @@
 	
 	angular.module('banalyzer').controller('IncomesController', incomesController);
 	
-	incomesController.$inject = [ 'restFactory', '$ionicModal', '$scope'];
-	function incomesController(restFactory, $ionicModal, $scope) {
+	incomesController.$inject = [ 'restFactory', '$ionicModal', '$scope', '$rootScope'];
+	function incomesController(restFactory, $ionicModal, $scope, $rootScope) {
 		let vm = this;
-		let email = $scope.login;
-    const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
-      'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+    	const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
+      		'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
 		
 		vm.user = {};
 		vm.operations = [];
 		vm.filteredOperations = [];
 		vm.months = months;
-    vm.actualMonth = parseMonth();
+    	vm.actualMonth = parseMonth();
 		vm.addIncome = addIncome;
 		vm.openModal = openModal;
 		vm.closeModal = closeModal;
 		vm.refresh = activate();
-    vm.filterOperations = filterOperations;
+    	vm.filterOperations = filterOperations;
 
 		$ionicModal.fromTemplateUrl('app/incomes/incomes.modal.view.html', {
 			scope: $scope
@@ -31,11 +30,11 @@
 
     function activate() {
       refreshOperations();
-      getUserByEmail(email);
+      getUserByEmail($rootScope.login);
     }
 
     function refreshOperations() {
-      restFactory.getOperations(email).then(function(op) {
+      restFactory.getOperations($rootScope.login).then(function(op) {
         vm.operations = op.operations.INCOME;
       });
     }
@@ -53,28 +52,27 @@
       });
     }
 
-		function addIncome(title, amount, category) {
-		  restFactory.addOperation(email, title, amount, "CASH", 'INCOME').then(
+	function addIncome(title, amount, category) {
+		restFactory.addOperation($rootScope.login, title, amount, "CASH", 'INCOME').then(
         function() {
-          refreshOperations();
-          closeModal();
-
-          vm.title = '';
-          vm.amount = '';
+		  refreshOperations();
+		  vm.title = '';
+		  vm.amount = '';
+		  closeModal();		  		  
       });
-		}
-
-		function openModal(){
-			vm.modal.show();
-	 	}
-
-	 	function closeModal() {
-		  vm.modal.hide();
-	 	}
-
-		function parseMonth() {
-		  let curMonth = new Date().getMonth();
-		  return months[curMonth];
-    }
 	}
+
+	function openModal() {
+		vm.modal.show();
+	}
+
+	function closeModal() {
+		vm.modal.hide();
+	}
+
+	function parseMonth() {
+		let curMonth = new Date().getMonth();
+		return months[curMonth];
+	}
+}
 })();

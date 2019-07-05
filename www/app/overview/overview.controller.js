@@ -3,10 +3,10 @@
 
 	angular.module('banalyzer').controller('OverviewController', overviewController);
 
-	overviewController.$inject = [ 'restFactory', '$scope' ];
-	function overviewController(restFactory, $scope) {
+	overviewController.$inject = [ 'restFactory', '$rootScope' ];
+	function overviewController(restFactory, $rootScope) {
 		let vm = this;
-		let email = $scope.login;
+		let email = $rootScope.login;
 
     vm.sum = 0;
 		vm.bankAccounts = [];
@@ -35,7 +35,6 @@
       restFactory.getUser(email).then(function(user) {
         vm.user = user;
         vm.sum = user.walletBalance;
-        console.log(user);
       });
     }
 
